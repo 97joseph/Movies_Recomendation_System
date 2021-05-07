@@ -1,0 +1,25 @@
+#IMPORTS
+!pip install -U -q PyDrive
+from oauth2client.client import GoogleCredentials
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+from google.colab import auth
+
+#GOOGLE AUNTHENITICATE FOR DRIVE ACCESS
+# Authenticate and create the PyDrive client.
+auth.authenticate_user()
+gauth = GoogleAuth()
+gauth.credentials = GoogleCredentials.get_application_default()
+drive = GoogleDrive(gauth)
+
+
+#DATASETS
+#https://drive.google.com/file/d/1gIA9AC8wNx2kdepuP2Y7K5J7LnihRD1V/view?usp=sharing
+downloaded = drive.CreateFile({'id':'1gIA9AC8wNx2kdepuP2Y7K5J7LnihRD1V'}) 
+downloaded.GetContentFile('Ratings.csv') 
+#https://drive.google.com/file/d/11duMozcad56OxTZtGrW3nY2Ir0hKU8ul/view?usp=sharing
+downloaded = drive.CreateFile({'id':'11duMozcad56OxTZtGrW3nY2Ir0hKU8ul'}) 
+downloaded.GetContentFile('Teleplay.csv')
+#https://drive.google.com/file/d/1TFQWYDQYwBf3cEtVsU6BtUnUZrwGOreH/view?usp=sharing
+downloaded = drive.CreateFile({'id':'1TFQWYDQYwBf3cEtVsU6BtUnUZrwGOreH'}) 
+downloaded.GetContentFile('New_Teleplay.csv')
